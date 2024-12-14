@@ -48,31 +48,44 @@ const PaperclipAssistant = () => {
   );
 };
 
-function FortuneTeller() {
+const FortuneTeller = () => {
   const [fortune, setFortune] = useState("CLICK TO REVEAL YOUR FINANCIAL DESTINY!");
+  const [loading, setLoading] = useState(false);
 
   const toggleFortune = () => {
-    const fortunes = [
-      "MASSIVE GAINS IN YOUR FUTURE! 💰",
-      "MARKET CRASH INCOMING! BRACE YOURSELF! 💥",
-      "YOU'LL BUY A MANSION THIS WEEK! 🏠",
-      "PREPARE FOR RADICAL FINANCIAL ADVENTURE! 🚀",
-      "STONKS ONLY GO UP! 📈"
-    ];
-    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-    setFortune(randomFortune);
+    setLoading(true); // Set loading to true when button is clicked
+    setTimeout(() => { // Simulate a delay for suspense
+      const fortunes = [
+        "MASSIVE GAINS IN YOUR FUTURE! 💰",
+        "MARKET CRASH INCOMING! BRACE YOURSELF! 💥",
+        "YOU'LL BUY A MANSION THIS WEEK! 🏠",
+        "PREPARE FOR RADICAL FINANCIAL ADVENTURE! 🚀",
+        "STONKS ONLY GO UP! 📈"
+      ];
+      const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+      setFortune(randomFortune);
+      setLoading(false); // Reset loading after fortune is revealed
+    }, 2000); 
   };
 
   return (
     <div className="fortune-teller">
       <h2>🎱 MARKET FORTUNE TELLER</h2>
-      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczV1cTF5d25jeHRia3YxMGwzbnRpbHNzdjFjcG5oMno0ajFmaTIxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EBAYanrsTqLBFXQPlj/giphy.webp"/>
-      <div>{fortune}</div>
-      <button onClick={toggleFortune}>PREDICT FUTURE</button>
+      {loading ? (
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+          <p>Magic is happening...</p>
+        </div>
+      ) : (
+        <>
+          <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczV1cTF5d25jeHRia3YxMGwzbnRpbHNzdjFjcG5oMno0ajFmaTIxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EBAYanrsTqLBFXQPlj/giphy.webp" alt="Fortune Teller" />
+          <div>{fortune}</div>
+          <button onClick={toggleFortune}>PREDICT FUTURE</button>
+        </>
+      )}
     </div>
   );
-}
-
+};
 
 
 function PortfolioSection() {
@@ -279,19 +292,65 @@ function Star() {
 function StatusBar() {
   return (
     <div className="status-bar">
-      💻 Connected to NASDAQ | Last Update: 14:35:22 | Network Speed: 56k
+      Connected to NASDAQ | Last Update: 14:35:22 | Network Speed: 56k
     </div>
   );
 }
+const stocks = [
+  { symbol: 'AAPL', price: (Math.random() * 150 + 50).toFixed(2) }, // Random price between $50 and $200
+  { symbol: 'MSFT', price: (Math.random() * 150 + 50).toFixed(2) },
+  { symbol: 'GOOGL', price: (Math.random() * 150 + 50).toFixed(2) },
+  { symbol: 'AMZN', price: (Math.random() * 150 + 50).toFixed(2) },
+  { symbol: 'TSLA', price: (Math.random() * 150 + 50).toFixed(2) },
+];
+const correctImage = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGRwdGlxZnBsZXM2bXB2ZmY1cTJ4cnk5eTRjbmN2amY3czR4Y3M4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4NwA6pKRNLjZFZBpS8/giphy.webp";
+const wrongImage = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTRjMHg5YW1nY3lnamM0ZGRlcDJxaThuNXE3NmVhcG92eWMyMWpsayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7U41ONykjedkInTXal/giphy.webp";
 
+const GuessTheStockPrice = () => {
+  const [selectedStock, setSelectedStock] = useState(stocks[Math.floor(Math.random() * stocks.length)]);
+  const [guess, setGuess] = useState('');
+  const [message, setMessage] = useState('');
+  const [image, setImage] = useState('');
 
+  const handleGuess = () => {
+    const userGuess = parseFloat(guess);
+    if (userGuess === parseFloat(selectedStock.price)) {
+      setMessage(`Correct! ${selectedStock.symbol} is $${selectedStock.price}.`);
+      setImage(wrongImage); // Set correct image
+    } else {
+      setMessage(`Wrong! ${selectedStock.symbol} is $${selectedStock.price}.`);
+      setImage(correctImage); // Set wrong image
+    }
+    // Reset the game
+    setSelectedStock(stocks[Math.floor(Math.random() * stocks.length)]);
+    setGuess('');
+  };
 
+  return (
+    <div className="guess-stock-price">
+      <h2>💰 Guess the Stock Price!</h2>
+      <p>What is the current price of {selectedStock.symbol}?</p>
+      <input
+        type="number"
+        value={guess}
+        onChange={(e) => setGuess(e.target.value)}
+        placeholder="Enter your guess"
+      />
+      <button onClick={handleGuess}>Submit Guess</button>
+      {message && <p>{message}</p>}
+      {image && <img src={image} alt="Result" style={{ width: '200px', height: 'auto' }} />} {/* Display the image */}
+    </div>
+  );
+};
+const handleClick=()=>{
+  window.open("https://www.codedex.io/pricing", "_blank", "noopener noreferrer");
+}
 const NewsItem = ({ title, description }) => (
   <div className="news-item">
     <div className="spiky-star"></div>
     <h3>{title}</h3>
     <p>{description}</p>
-    <button className="buy-now-btn">BUY NOW!</button>
+    <button className="buy-now-btn" onClick={handleClick}>BUY NOW!</button>
   </div>
 );
 
@@ -377,20 +436,19 @@ function Forum() {
 
   return (
     <div className="forum">
-      <h2>📢 Community Forum</h2>
+      <h2> Community Forum</h2>
       <form onSubmit={handleSubmit} className="post-form">
         <input
           type="text"
           placeholder="Post Title"
           value={newPostTitle}
           onChange={(e) => setNewPostTitle(e.target.value)}
-          required
         />
         <textarea
           placeholder="Write your post here..."
           value={newPostContent}
           onChange={(e) => setNewPostContent(e.target.value)}
-          required
+          
         />
         <button type="submit">Submit Post</button>
       </form>
@@ -420,12 +478,31 @@ function App() {
   const handleSearchChange =(e)=>{
     setSearchQuery(e.target.value);
   }
-
+  const Clock = () => {
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+  
+    useEffect(() => {
+      const timerId = setInterval(() => {
+        setTime(new Date().toLocaleTimeString());
+      }, 1000);
+  
+      return () => clearInterval(timerId);
+    }, []);
+  
+    return (
+      <div className="retro-clock">
+        {time}
+      </div>
+    );
+  };
   return (
     <main>
       <header className="header">
         <div className="header-content">
-          <span className="title">YAHOO FINANCE</span>
+          <span className="title">YAHOO FINANCE
+
+            <img src='https://www.freeiconspng.com/thumbs/yahoo-mail-icon/yahoo-mail-icon-16.png' height="50" width="50"/>
+          </span>
           
         </div>
       </header>
@@ -450,6 +527,7 @@ function App() {
         <div className="left-column">
           <div className='left-content'>
           <h2>NEWS</h2>
+          <Clock/>
           <a href='#' className='a'>Microsoft on Congress!</a>
             <p>Microsoft under fire for failing to improve Microsoft Explorer!</p>
           <img src= "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRuZXBpYXQ0eGduZGt3cnRybXhrY2RvdHp6d2dkZjZiY3BmMHh1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/200.webp" height="170"/>
@@ -464,8 +542,12 @@ function App() {
 
           <div className='market-watch'><p>Market Watch</p>
           
-            <p><a href='#'>Device</a>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
+            <p><a href='#'>Device</a>Lorem ipsum dolor sit amet, consectetuDuis aute irure dolor in re eu fugiat nulla pat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          
+            <a href='#' className='a'>Microsoft on Congress!</a>
+            <p>Microsoft under fire for failing to improve Microsoft Explorer!</p>
+          <img src= "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRuZXBpYXQ0eGduZGt3cnRybXhrY2RvdHp6d2dkZjZiY3BmMHh1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/200.webp" height="170"/></div>
+          <GuessTheStockPrice/>
           </div>
         </div>
 
