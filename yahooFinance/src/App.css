@@ -468,7 +468,7 @@ body, html {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   background-color: #000000;
   color: #00FF00;
   padding: 10px;
@@ -565,4 +565,44 @@ body, html {
 
 .paperclip:hover .paperclip-text {
   display: block;
+}
+
+.forum {
+  background-color: #000080; /* Navy blue background */
+  color: #FFFFFF; /* White text */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.post-form input,
+.post-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.post-form button {
+  background-color: #FF00FF; /* Magenta button */
+  color: #FFFFFF; /* White text */
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.post-list {
+  margin-top: 20px;
+}
+
+.post-item {
+  background-color: #000000; /* Black background for posts */
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }

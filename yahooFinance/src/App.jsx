@@ -352,6 +352,59 @@ const Simulator = () => {
   );
 };
 
+function Forum() {
+  const [posts, setPosts] = useState([
+    { id: 1, title: "What do you think about Tesla?", content: "I believe Tesla will continue to grow. What are your thoughts?" },
+    { id: 2, title: "Best stocks to buy in 2024", content: "I'm looking for recommendations for stocks to invest in this year." },
+  ]);
+  
+  const [newPostTitle, setNewPostTitle] = useState('');
+  const [newPostContent, setNewPostContent] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newPostTitle && newPostContent) {
+      const newPost = {
+        id: posts.length + 1,
+        title: newPostTitle,
+        content: newPostContent,
+      };
+      setPosts([...posts, newPost]);
+      setNewPostTitle('');
+      setNewPostContent('');
+    }
+  };
+
+  return (
+    <div className="forum">
+      <h2>📢 Community Forum</h2>
+      <form onSubmit={handleSubmit} className="post-form">
+        <input
+          type="text"
+          placeholder="Post Title"
+          value={newPostTitle}
+          onChange={(e) => setNewPostTitle(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="Write your post here..."
+          value={newPostContent}
+          onChange={(e) => setNewPostContent(e.target.value)}
+          required
+        />
+        <button type="submit">Submit Post</button>
+      </form>
+      <div className="post-list">
+        {posts.map((post) => (
+          <div key={post.id} className="post-item">
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function App() {
   // State to control the visibility of the popup
@@ -384,7 +437,7 @@ function App() {
               <span className="buy-sell-indicator">🟢 BUY!</span>
               💹 AAPL: +5.23 | MSFT: -2.11 | GOOGL: +3.45 |
               <span className="buy-sell-indicator">🔴 SELL!</span>
-              AMZN: +4.67 |
+              AMZN: +4.67 | AAPL: +2.23 | MSFT: -2.11 | GOOGL: +3.45 |
               <span className="buy-sell-indicator">🟢 BUY!</span>
               TSLA: -1.89 💹| MSFT: -2.11 | GOOGL: +3.45 |
             </div>
@@ -428,6 +481,7 @@ function App() {
             
             <StatusBar />
             <MarketGraph />
+            <Forum/>
             <PaperclipAssistant/>
 
             
