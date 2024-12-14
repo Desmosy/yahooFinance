@@ -1,0 +1,568 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: url('./assets/cursor.png') 10 10, auto;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row; /* Keep the columns side by side */
+  flex-grow: 1; /* Allow layout to grow and fill the remaining height */
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  background: blue;
+  padding: 20px;
+  font-size: x-large;
+  text-align: center;
+  width: auto;
+  z-index: 10; /* Ensures the header stays on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Position the star container inside the header */
+.star-container {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 20px; /* Adjust for positioning on the left */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+/* Style for the star */
+.star {
+  width: 50px; /* Adjust the size of the star */
+  height: 50px;
+  background-color: #ffcc00; /* Bright tomato red */
+  clip-path: polygon(
+      50% 0%, 
+      61% 39%, 
+      98% 39%, 
+      68% 63%, 
+      79% 100%, 
+      50% 76%, 
+      21% 100%, 
+      32% 63%, 
+      2% 39%, 
+      39% 39%
+  );
+  transform: rotate(15deg);
+  box-shadow: 
+      5px 5px 0 #000, 
+      10px 10px 0 rgba(255,255,255,0.5);
+  animation: wiggle 1.5s infinite alternate;
+}
+
+
+.stock-background{
+  background: black;
+
+}
+.stock-performance.positive {
+  color: #5bff5b;
+}
+
+.stock-performance.negative {
+  color: red;
+}
+.stock-ticker{
+  padding: 0.5rem;
+}
+.stock-ticker span {
+  display: inline-block; /* Make the ticker items inline */
+  padding-right: 2rem; /* Add some space between items */
+  font-size: 1.2rem; /* Adjust text size as needed */
+}
+
+/* The animation to scroll the stock ticker text */
+@keyframes scrollTicker {
+  0% {
+    transform: translateX(100%); /* Start the content off the right side */
+  }
+  100% {
+    transform: translateX(-100%); /* End the content off the left side */
+  }
+}
+
+.stock-ticker {
+  animation: scrollTicker 20s linear infinite; /* Adjust timing as needed */
+}
+/* Popup container (hidden by default) */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup box styles */
+.popup {
+  background-color: #ffcc00; /* Bright 90s yellow */
+  border: 2px solid #000;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Spiky star design */
+.spiky-star {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255, 247, 6); /* Neon pink */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.news-item {
+  position: relative;
+  border: 2px solid #FF00FF; /* Magenta border */
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #000080; /* Navy blue background */
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.buy-now-btn {
+  background-color: #FF00FF; /* Magenta button */
+  color: #FFFF00; /* Yellow text */
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
+/* Button styling */
+.close-btn {
+  background-color: #ff33cc; /* Neon pink button */
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.close-btn:hover {
+  background-color: #ff3399; /* Lighter pink for hover */
+}
+
+/* Button to toggle pop-up */
+.show-popup-btn {
+  background-color: #ff33cc; /* Neon pink button */
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.show-popup-btn:hover {
+  background-color: #ff3399; /* Lighter pink for hover */
+}
+
+.star {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #ffcc00; /* Bright tomato red */
+  clip-path: polygon(
+      50% 0%, 
+      61% 39%, 
+      98% 39%, 
+      68% 63%, 
+      79% 100%, 
+      50% 76%, 
+      21% 100%, 
+      32% 63%, 
+      2% 39%, 
+      39% 39%
+  );
+  transform: rotate(15deg);
+  box-shadow: 
+      5px 5px 0 #000, 
+      10px 10px 0 rgba(255,255,255,0.5);
+  animation: wiggle 1.5s infinite alternate;
+}
+.star::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: rgba(255,255,255,0.3);
+  z-index: -1;
+  clip-path: polygon(
+      50% 0%, 
+      61% 39%, 
+      98% 39%, 
+      68% 63%, 
+      79% 100%, 
+      50% 76%, 
+      21% 100%, 
+      32% 63%, 
+      2% 39%, 
+      39% 39%
+  );
+}
+.star::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 2px 2px 0 black;
+}
+@keyframes wiggle {
+  0% { transform: rotate(10deg) scale(1); }
+  100% { transform: rotate(20deg) scale(1.05); }
+}
+.gif{
+  height: 50%;
+  width: 50%;
+}
+.simulator-container {
+  background-color: #111;
+  border: 3px solid #00FF00;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+
+.stock-list, .portfolio, .log {
+  margin-bottom: 20px;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #00FF00;
+  padding: 5px 0;
+}
+
+.trade-button {
+  background-color: #00FF00;
+  color: black;
+  border: none;
+  padding: 2px 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.balance {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.log-entry {
+  font-size: 0.8em;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.a{
+  text-decoration: underline;
+}
+.portfolio-section {
+  display: flex;
+  justify-content: space-between;
+  background-color: #000080; /* Navy blue background */
+  padding: 10px;
+  border: 2px solid #00FF00; /* Neon green border */
+}
+
+.portfolio-column {
+  width: 30%;
+  padding: 15px;
+  background-color: #000000; /* Black background */
+  border: 2px solid #FF00FF; /* Magenta border */
+  box-shadow: 0 0 10px #00FFFF; /* Cyan glow effect */
+}
+
+.portfolio-column h2 {
+  color: #FFFF00; /* Yellow text */
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px #FF00FF; /* Magenta text shadow */
+}
+.portfolio-column {
+  width: 30%; /* Set width for portfolio columns */
+  padding: 20px;
+}
+
+.market-categories {
+  background-color: #000080;
+  border: 2px solid #00FF00;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.market-categories h2 {
+  color: #FFFF00;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px #FF00FF;
+}
+
+.category-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  background-color: #0000FF;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid #00FF00;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-item:hover {
+  background-color: #00FF00;
+  color: #000000;
+}
+
+.left-column {
+  width: 20%;
+  background-color: black;
+  overflow-y: auto;
+  flex-grow: 1;
+  border: 5px solid white;
+  height: 100%;
+  padding: 15px; /* Add padding for better spacing */
+}
+
+.left-column h2 {
+  color: #00FF00; /* Neon green for retro feel */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.news-item {
+  margin-bottom: 20px;
+  border-bottom: 1px dotted #00FF00;
+  padding-bottom: 15px;
+}
+
+.news-item h3 {
+  color: #FFFF00; /* Yellow for headlines */
+  margin-bottom: 10px;
+}
+
+.news-item p {
+  color: #FFFFFF; /* White text for better readability */
+  line-height: 1.4;
+}
+
+.left-column img {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+}
+.right-column {
+  width: 70%; /* Set width for the right column */
+  padding: 2px;
+}
+
+.retro-button {
+  background-color: #FF00FF; /* Magenta background */
+  color: #FFFF00; /* Yellow text */
+  border: 2px solid #00FF00; /* Neon green border */
+  padding: 5px 10px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000000; /* Black shadow for depth */
+  text-shadow: 1px 1px #000000; /* Text shadow for readability */
+}
+
+.retro-button:hover {
+  background-color: #00FFFF; /* Cyan on hover */
+  color: #000000; /* Black text on hover */
+}
+
+
+.rightest-column{
+  background-color: black;
+  color:white;
+  width:10%;
+  padding: 1px;
+  border: 2px white dotted;
+}
+
+.market-graph {
+  width: 95%;
+  height: 300px; /* Adjust the height of the graph */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align the bars at the bottom */
+  margin: 5px;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 100%;  /* Ensures the container takes up the full height */
+}
+
+.graph-bar {
+  width: 30px;  /* Set a fixed width for each bar */
+  background-color: rgb(75, 192, 192);  /* Default color */
+  margin-left: 5px;
+}
+.ticker-tape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000000;
+  color: #00FF00;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-top: 3px solid #00FFFF;
+}
+.ticker-content {
+  display: inline-block;
+
+  animation: tickerMove 20s linear infinite;
+}
+.buy-sell-indicator {
+  display: inline-block;
+  margin: 0 20px;
+  animation: blink 0.5s infinite;
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fortune-teller {
+  background-color: #000080; /* Navy blue background */
+  border: 3px solid #00FF00; /* Neon green border */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px #00FFFF; /* Cyan glow effect */
+}
+
+.fortune-teller h2 {
+  color: #FFFF00; /* Yellow text */
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px #FF00FF; /* Magenta text shadow */
+}
+
+.fortune-teller div {
+  background-color: #000000; /* Black background */
+  color: #00FF00; /* Neon green text */
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 1.2em;
+  border: 2px dashed #FF00FF; /* Magenta dashed border */
+}
+
+.fortune-teller button {
+  background-color: #FF00FF; /* Magenta background */
+  color: #FFFFFF; /* White text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fortune-teller button:hover {
+  background-color: #00FFFF; /* Cyan background on hover */
+  color: #000000; /* Black text on hover */
+  transform: scale(1.1); /* Slight grow effect on hover */
+}
+
+
+.search-bar{
+  border: #00FF00 2px solid;
+  width:90%
+}
+
+@keyframes movePaperclip {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.paperclip {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+  animation: movePaperclip 1s ease-in-out infinite;
+}
+
+.paperclip-text {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  background-color: #00FF00;
+  padding: 5px;
+  color: black;
+  border-radius: 5px;
+  display: none;
+}
+
+.paperclip:hover .paperclip-text {
+  display: block;
+}

@@ -1,0 +1,85 @@
+:root {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: url('./assets/cursor.png') 10 10, auto;
+
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body, html {
+  margin: 0;  /* Remove margin from body */
+  padding: 0; /* Remove padding from body */
+  height: 100%; /* Full height */
+  width: 100%;  /* Full width */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: blue;
+  padding: 20px;
+  font-size: x-large;
+  text-align: center;
+  width: 100%; /* Ensure full width */
+  z-index: 1; /* Ensure header stays on top */
+}
+
+
+.portfolio-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.portfolio-column {
+  width: 45%;
+}
+
+button {
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
