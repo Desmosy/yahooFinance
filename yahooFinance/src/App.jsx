@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2'; // Import the Line chart component from react-chartjs-2
-
+import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import './App.css';
 import coinSound from './assets/coin-sound.wav';
@@ -8,6 +7,8 @@ import drop from './assets/drop.wav';
 import DollarCatchGame from './DollarCatchGame';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+
+//for the stock item component
 function StockItem({ symbol, performance, change }) {
   const performanceClass = change > 0 ? 'positive' : 'negative';
   return (
@@ -18,6 +19,7 @@ function StockItem({ symbol, performance, change }) {
   );
 }
 
+//for the clip assistant which acts like advisor
 const PaperclipAssistant = () => {
   const [showAdvice, setShowAdvice] = useState(false);
 
@@ -48,6 +50,8 @@ const PaperclipAssistant = () => {
   );
 };
 
+
+//fortune teller component
 const FortuneTeller = () => {
   const [fortune, setFortune] = useState("CLICK TO REVEAL YOUR FINANCIAL DESTINY!");
   const [loading, setLoading] = useState(false);
@@ -87,7 +91,7 @@ const FortuneTeller = () => {
   );
 };
 
-
+//portfolio section component
 function PortfolioSection() {
   const [portfolioData, setPortfolioData] = useState([
     { symbol: "AAPL", performance: "+$456.78 (5.6%)", change: 5.6 },
@@ -108,7 +112,7 @@ function PortfolioSection() {
       setPortfolioData(newData);
     };
 
-    const interval = setInterval(updatePortfolio, 1000); // Update every 10 seconds
+    const interval = setInterval(updatePortfolio, 1000); // Update every 10s
     return () => clearInterval(interval);
   }, []);
 
@@ -152,7 +156,6 @@ function MarketCategories() {
 function MarketGraph() {
   const [graphData, setGraphData] = useState([80, 90, 100, 140, 110]);
 
-  // Generate random data for the graph
   const randomData = () => {
     return [
       Math.floor(Math.random() * 100) + 50,
@@ -171,22 +174,21 @@ function MarketGraph() {
     return () => clearInterval(interval);
   }, []);
 
-  // Chart.js data and configuration with 90s retro style
   const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     datasets: [
       {
         label: 'S&P 500',
         data: graphData,
-        borderColor: '#00FF00', // Bright green typical of old CRT monitors
-        backgroundColor: 'rgba(0, 255, 0, 0.1)', // Transparent green
-        borderWidth: 3, // Thicker line
-        pointBackgroundColor: '#FF00FF', // Magenta points
-        pointBorderColor: '#000000', // Black point borders
-        pointRadius: 6, // Larger points
+        borderColor: '#00FF00',
+        backgroundColor: 'rgba(0, 255, 0, 0.1)',
+        borderWidth: 3,
+        pointBackgroundColor: '#FF00FF',
+        pointBorderColor: '#000000',
+        pointRadius: 6,
         pointHoverRadius: 8,
         fill: true,
-        tension: 0 // Sharp, pixelated look instead of smooth curve
+        tension: 0
       },
     ],
   };
@@ -197,14 +199,14 @@ function MarketGraph() {
     scales: {
       x: {
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)', // Faint grid lines
-          borderColor: '#00FF00', // Green axes
+          color: 'rgba(255, 255, 255, 0.1)',
+          borderColor: '#00FF00',
           tickColor: '#00FF00'
         },
         ticks: {
-          color: '#00FF00', // Green text
+          color: '#00FF00',
           font: {
-            family: 'monospace', // Monospace font for retro feel
+            family: 'monospace',
             size: 12
           }
         },
@@ -216,14 +218,14 @@ function MarketGraph() {
       },
       y: {
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)', // Faint grid lines
-          borderColor: '#00FF00', // Green axes
+          color: 'rgba(255, 255, 255, 0.1)',
+          borderColor: '#00FF00',
           tickColor: '#00FF00'
         },
         ticks: {
-          color: '#00FF00', // Green text
+          color: '#00FF00',
           font: {
-            family: 'monospace', // Monospace font for retro feel
+            family: 'monospace',
             size: 12
           }
         },
@@ -237,17 +239,17 @@ function MarketGraph() {
     plugins: {
       legend: {
         labels: {
-          color: '#00FF00', // Green legend text
+          color: '#00FF00',
           font: {
             family: 'monospace'
           }
         }
       },
       tooltip: {
-        backgroundColor: '#000000', // Black tooltip background
-        borderColor: '#00FF00', // Green border
-        titleColor: '#00FF00', // Green title
-        bodyColor: '#00FF00', // Green body text
+        backgroundColor: '#000000',
+        borderColor: '#00FF00',
+        titleColor: '#00FF00',
+        bodyColor: '#00FF00',
         callbacks: {
           title: (tooltipItem) => `Month: ${tooltipItem[0].label}`,
         }
@@ -257,8 +259,8 @@ function MarketGraph() {
 
   return (
     <section className="market-graph" style={{
-      backgroundColor: '#000000', // Black background
-      border: '2px solid #00FF00', // Green border
+      backgroundColor: '#000000',
+      border: '2px solid #00FF00',
       padding: '10px'
     }}>
       <div className="graph-container" style={{ height: '300px' }}>
@@ -268,6 +270,8 @@ function MarketGraph() {
   );
 }
 
+
+//for the different actions in the website
 function ActionButtons() {
   const playSound = () => {
     const audio = new Audio(drop);
@@ -284,6 +288,7 @@ function ActionButtons() {
 };
 
 
+//star component
 
 function Star() {
   return <div className="star"></div>;
@@ -297,7 +302,7 @@ function StatusBar() {
   );
 }
 const stocks = [
-  { symbol: 'AAPL', price: (Math.random() * 150 + 50).toFixed(2) }, // Random price between $50 and $200
+  { symbol: 'AAPL', price: (Math.random() * 150 + 50).toFixed(2) },
   { symbol: 'MSFT', price: (Math.random() * 150 + 50).toFixed(2) },
   { symbol: 'GOOGL', price: (Math.random() * 150 + 50).toFixed(2) },
   { symbol: 'AMZN', price: (Math.random() * 150 + 50).toFixed(2) },
@@ -316,12 +321,11 @@ const GuessTheStockPrice = () => {
     const userGuess = parseFloat(guess);
     if (userGuess === parseFloat(selectedStock.price)) {
       setMessage(`Correct! ${selectedStock.symbol} is $${selectedStock.price}.`);
-      setImage(wrongImage); // Set correct image
+      setImage(wrongImage);
     } else {
       setMessage(`Wrong! ${selectedStock.symbol} is $${selectedStock.price}.`);
-      setImage(correctImage); // Set wrong image
+      setImage(correctImage);
     }
-    // Reset the game
     setSelectedStock(stocks[Math.floor(Math.random() * stocks.length)]);
     setGuess('');
   };
@@ -338,7 +342,7 @@ const GuessTheStockPrice = () => {
       />
       <button onClick={handleGuess}>Submit Guess</button>
       {message && <p>{message}</p>}
-      {image && <img src={image} alt="Result" style={{ width: '200px', height: 'auto' }} />} {/* Display the image */}
+      {image && <img src={image} alt="Result" style={{ width: '200px', height: 'auto' }} />} { }
     </div>
   );
 };
@@ -411,6 +415,8 @@ const Simulator = () => {
   );
 };
 
+
+//final post forum component
 function Forum() {
   const [posts, setPosts] = useState([
     { id: 1, title: "What do you think about Tesla?", content: "I believe Tesla will continue to grow. What are your thoughts?" },
@@ -464,11 +470,18 @@ function Forum() {
   );
 }
 
+//footer
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <p>All rights reserved @Koshish Shrestha</p>
+    </footer>
+  );
+};
+
 function App() {
-  // State to control the visibility of the popup
   const [showPopup, setShowPopup] = useState(false);
 
-  // Function to toggle the popup visibility
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -549,11 +562,11 @@ function App() {
               <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjNhbmFpNjl6c3FnZHYyd3RsNjJydGt1ZHBtNHJobjNnNzFnZjE5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bYg33GbNbNIVzSrr84/giphy.webp" height="170" /></div>
             <GuessTheStockPrice />
 
-            <DollarCatchGame/>
+            <DollarCatchGame />
           </div>
         </div>
 
-        {/* center  columns for Portfolio, Hot Stocks, and Top Gainers */}
+        {/* center  columns */}
         <div className="right-column">
           <PortfolioSection />
           <MarketCategories />
@@ -562,16 +575,10 @@ function App() {
             <Simulator />
             <ActionButtons />
             <FortuneTeller />
-
             <StatusBar />
             <MarketGraph />
             <Forum />
             <PaperclipAssistant />
-
-
-
-
-
           </div>
         </div>
 
@@ -607,10 +614,11 @@ function App() {
             <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140" />
 
             <h5>The Dow fell 390.23 to 8,019.26, to its lowest level...</h5>
+            <img src="https://media0.giphy.com/media/J5JIcOWeznWIU/giphy.webp?cid=ecf05e4751zjfqbp6q53yzurcr0rbcxf5kjs3vvzufvza19o&ep=v1_gifs_search&rid=giphy.webp&ct=g" height="170" width="140" />
 
+            <div><p>Is it Wise to Invest in Chip Company NVIDIA? Yahoo Analyst Says NO!<button className="retro-button">READ MORE</button> </p></div>
 
-
-
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140" />
 
           </div>
         </div>
@@ -618,11 +626,9 @@ function App() {
 
       </div>
 
-      {/* Star Icon */}
       <div className="star-container">
       </div>
 
-      {/* Pop-up */}
       {showPopup && (
         <div className="popup-container">
           <div className="popup">
@@ -634,10 +640,10 @@ function App() {
         </div>
       )}
 
-      {/* Button to toggle the popup */}
       <button className="show-popup-btn" onClick={togglePopup}>
         Wanna Be Rich? Click Here!
       </button>
+      <Footer/>
     </main>
   );
 }

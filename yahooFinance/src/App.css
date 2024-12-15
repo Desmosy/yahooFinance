@@ -9,50 +9,48 @@ body, html {
 
 .layout {
   display: flex;
-  flex-direction: row; /* Keep the columns side by side */
-  flex-grow: 1; /* Allow layout to grow and fill the remaining height */
+  flex-direction: row; 
+  flex-grow: 1; 
 }
 
 
 .header {
   position: sticky;
   top: 0;
-  background: blue; /* Header background color */
+  background: blue; 
   padding: 20px;
   font-size: x-large;
   display: flex;
-  justify-content: space-between; /* Space between title and clock */
-  align-items: center; /* Center items vertically */
+  justify-content: space-between; 
+  align-items: center; 
 }
-
 .header-content {
   display: flex;
-  justify-content: center; /* Center title */
-  flex-grow: 1; /* Allow title to take available space */
+  justify-content: center; 
+  flex-grow: 1; 
 }
 
 .title {
-  color: white; /* Title text color */
+  color: white; 
 }
 
 .retro-clock {
-  font-family: 'Courier New', monospace; /* Retro font */
-  color: #00FF00; /* Bright green text */
-  font-size: 24px; /* Adjust size as needed */
+  font-family: 'Courier New', monospace; 
+  color: #00FF00;
+  font-size: 24px; 
+
 }
-/* Position the star container inside the header */
 .star-container {
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 20px; /* Adjust for positioning on the left */
-  transform: translateY(-50%); /* Adjust for vertical centering */
+  top: 50%; 
+  left: 20px; 
+  transform: translateY(-50%); 
 }
 
-/* Style for the star */
 .star {
-  width: 50px; /* Adjust the size of the star */
+  width: 50px; 
   height: 50px;
-  background-color: #ffcc00; /* Bright tomato red */
+  background-color: #ffcc00; 
   clip-path: polygon(
       50% 0%, 
       61% 39%, 
@@ -88,12 +86,11 @@ body, html {
   padding: 0.5rem;
 }
 .stock-ticker span {
-  display: inline-block; /* Make the ticker items inline */
-  padding-right: 2rem; /* Add some space between items */
-  font-size: 1.2rem; /* Adjust text size as needed */
+  display: inline-block; 
+  padding-right: 2rem; 
+  font-size: 1.2rem; 
 }
 
-/* The animation to scroll the stock ticker text */
 @keyframes scrollTicker {
   0% {
     transform: translateX(100%); /* Start the content off the right side */
@@ -104,9 +101,9 @@ body, html {
 }
 
 .stock-ticker {
-  animation: scrollTicker 20s linear infinite; /* Adjust timing as needed */
+  animation: scrollTicker 20s linear infinite; 
 }
-/* Popup container (hidden by default) */
+
 .popup-container {
   position: fixed;
   top: 0;
@@ -119,9 +116,9 @@ body, html {
   align-items: center;
 }
 
-/* Popup box styles */
+/* Popup box */
 .popup {
-  background-color: #ffcc00; /* Bright 90s yellow */
+  background-color: #ffcc00; 
   border: 2px solid #000;
   padding: 20px;
   border-radius: 10px;
@@ -138,7 +135,7 @@ body, html {
   left: -20px;
   width: 50px;
   height: 50px;
-  background-color: rgb(255, 247, 6); /* Neon pink */
+  background-color: rgb(255, 247, 6); 
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   transform: rotate(45deg);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -146,11 +143,10 @@ body, html {
 
 .news-item {
   position: relative;
-  border: 2px solid #FF00FF; /* Magenta border */
+  border: 2px solid #FF00FF; 
   padding: 15px;
   margin-bottom: 20px;
-  background-color: #000080; /* Navy blue background */
-}
+  background-color: #000080; }
 
 
 @keyframes spin {
@@ -159,8 +155,8 @@ body, html {
 }
 
 .buy-now-btn {
-  background-color: #FF00FF; /* Magenta button */
-  color: #FFFF00; /* Yellow text */
+  background-color: #FF00FF; 
+  color: #FFFF00; 
   border: none;
   padding: 5px 10px;
   font-weight: bold;
@@ -175,9 +171,9 @@ body, html {
 }
 
 
-/* Button styling */
+/* Button  */
 .close-btn {
-  background-color: #ff33cc; /* Neon pink button */
+  background-color: #ff33cc; 
   border: none;
   padding: 10px;
   color: white;
@@ -187,12 +183,11 @@ body, html {
 }
 
 .close-btn:hover {
-  background-color: #ff3399; /* Lighter pink for hover */
+  background-color: #ff3399; 
 }
 
-/* Button to toggle pop-up */
 .show-popup-btn {
-  background-color: #ff33cc; /* Neon pink button */
+  background-color: #ff33cc; 
   border: none;
   padding: 10px;
   color: white;
@@ -203,14 +198,14 @@ body, html {
 }
 
 .show-popup-btn:hover {
-  background-color: #ff3399; /* Lighter pink for hover */
+  background-color: #ff3399; 
 }
 
 .star {
   position: relative;
   width: 200px;
   height: 200px;
-  background-color: #ffcc00; /* Bright tomato red */
+  background-color: #ffcc00;
   clip-path: polygon(
       50% 0%, 
       61% 39%, 
@@ -323,28 +318,28 @@ body, html {
 .portfolio-section {
   display: flex;
   justify-content: space-between;
-  background-color: #000080; /* Navy blue background */
+  background-color: #000080; 
   padding: 10px;
-  border: 2px solid #00FF00; /* Neon green border */
+  border: 2px solid #00FF00; 
 }
 
 .portfolio-column {
   width: 30%;
   padding: 15px;
-  background-color: #000000; /* Black background */
-  border: 2px solid #FF00FF; /* Magenta border */
-  box-shadow: 0 0 10px #00FFFF; /* Cyan glow effect */
+  background-color: #000000; 
+  border: 2px solid #FF00FF; 
+  box-shadow: 0 0 10px #00FFFF; 
 }
 
 .portfolio-column h2 {
-  color: #FFFF00; /* Yellow text */
+  color: #FFFF00; 
   text-align: center;
   font-size: 1.2em;
   margin-bottom: 10px;
-  text-shadow: 2px 2px #FF00FF; /* Magenta text shadow */
+  text-shadow: 2px 2px #FF00FF; 
 }
 .portfolio-column {
-  width: 30%; /* Set width for portfolio columns */
+  width: 30%; 
   padding: 20px;
 }
 
@@ -393,11 +388,11 @@ body, html {
   flex-grow: 1;
   border: 5px solid white;
   height: 100%;
-  padding: 15px; /* Add padding for better spacing */
+  padding: 15px; 
 }
 
 .left-column h2 {
-  color: #00FF00; /* Neon green for retro feel */
+  color: #00FF00; 
   text-align: center;
   margin-bottom: 15px;
 }
@@ -409,12 +404,12 @@ body, html {
 }
 
 .news-item h3 {
-  color: #FFFF00; /* Yellow for headlines */
+  color: #FFFF00; 
   margin-bottom: 10px;
 }
 
 .news-item p {
-  color: #FFFFFF; /* White text for better readability */
+  color: #FFFFFF; 
   line-height: 1.4;
 }
 
@@ -424,26 +419,26 @@ body, html {
   max-width: 100%;
 }
 .right-column {
-  width: 70%; /* Set width for the right column */
+  width: 70%; 
   padding: 2px;
 }
 
 .retro-button {
-  background-color: #FF00FF; /* Magenta background */
-  color: #FFFF00; /* Yellow text */
-  border: 2px solid #00FF00; /* Neon green border */
+  background-color: #FF00FF; 
+  color: #FFFF00; 
+  border: 2px solid #00FF00; 
   padding: 5px 10px;
   font-family: 'Courier New', monospace;
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: 3px 3px 0 #000000; /* Black shadow for depth */
-  text-shadow: 1px 1px #000000; /* Text shadow for readability */
+  box-shadow: 3px 3px 0 #000000; 
+  text-shadow: 1px 1px #000000; 
 }
 
 .retro-button:hover {
-  background-color: #00FFFF; /* Cyan on hover */
-  color: #000000; /* Black text on hover */
+  background-color: #00FFFF; 
+  color: #000000; 
 }
 
 
@@ -457,10 +452,10 @@ body, html {
 
 .market-graph {
   width: 95%;
-  height: 300px; /* Adjust the height of the graph */
+  height: 300px; 
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Align the bars at the bottom */
+  align-items: flex-end; 
   margin: 5px;
 }
 
@@ -468,12 +463,12 @@ body, html {
   display: flex;
   flex-direction: row;
   width: 70%;
-  height: 100%;  /* Ensures the container takes up the full height */
+  height: 100%; 
 }
 
 .graph-bar {
-  width: 30px;  /* Set a fixed width for each bar */
-  background-color: rgb(75, 192, 192);  /* Default color */
+  width: 30px;  
+  background-color: rgb(75, 192, 192);  
   margin-left: 5px;
 }
 .ticker-tape {
@@ -505,32 +500,32 @@ body, html {
 }
 
 .fortune-teller {
-  background-color: #000080; /* Navy blue background */
-  border: 3px solid #00FF00; /* Neon green border */
+  background-color: #000080; 
+  border: 3px solid #00FF00; 
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 10px #00FFFF; /* Cyan glow effect */
+  box-shadow: 0 0 10px #00FFFF; 
 }
 
 .fortune-teller h2 {
-  color: #FFFF00; /* Yellow text */
+  color: #FFFF00; 
   font-size: 1.5em;
   margin-bottom: 15px;
-  text-shadow: 2px 2px #FF00FF; /* Magenta text shadow */
+  text-shadow: 2px 2px #FF00FF; 
 }
 
 .fortune-teller div {
-  background-color: #000000; /* Black background */
-  color: #00FF00; /* Neon green text */
+  background-color: #000000; 
+  color: #00FF00; 
   padding: 15px;
   margin: 10px 0;
   font-size: 1.2em;
-  border: 2px dashed #FF00FF; /* Magenta dashed border */
+  border: 2px dashed #FF00FF; 
 }
 
 .fortune-teller button {
-  background-color: #FF00FF; /* Magenta background */
-  color: #FFFFFF; /* White text */
+  background-color: #FF00FF; 
+  color: #FFFFFF; 
   border: none;
   padding: 10px 20px;
   font-size: 1em;
@@ -539,9 +534,9 @@ body, html {
 }
 
 .fortune-teller button:hover {
-  background-color: #00FFFF; /* Cyan background on hover */
-  color: #000000; /* Black text on hover */
-  transform: scale(1.1); /* Slight grow effect on hover */
+  background-color: #00FFFF;
+  color: #000000; 
+  transform: scale(1.1); 
 }
 
 
@@ -558,7 +553,7 @@ body, html {
 
 .paperclip {
   position: fixed;
-  bottom: 20px;
+  bottom: 120px;
   left: 20px;
   cursor: pointer;
   animation: movePaperclip 1s ease-in-out infinite;
@@ -580,8 +575,8 @@ body, html {
 }
 
 .forum {
-  background-color: #000080; /* Navy blue background */
-  color: #FFFFFF; /* White text */
+  background-color: #000080; 
+  color: #FFFFFF; 
   padding: 20px;
   border-radius: 8px;
 }
@@ -601,8 +596,8 @@ body, html {
 }
 
 .post-form button {
-  background-color: #FF00FF; /* Magenta button */
-  color: #FFFFFF; /* White text */
+  background-color: #FF00FF; 
+  color: #FFFFFF; 
   padding: 10px;
   border: none;
   cursor: pointer;
@@ -613,22 +608,22 @@ body, html {
 }
 
 .post-item {
-  background-color: #000000; /* Black background for posts */
+  background-color: #000000; 
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
 .guess-stock-price {
-  background-color: #000080; /* Navy blue background */
-  color: #FFFFFF; /* White text */
+  background-color: #000080; 
+  color: #FFFFFF; 
   padding: 20px;
   border-radius: 8px;
-  margin-top: 20px; /* Space above the game */
+  margin-top: 20px; 
 }
 
 .guess-stock-price h2 {
-  color: #00FF00; /* Bright green for headings */
+  color: #00FF00; 
 }
 
 .guess-stock-price input {
@@ -638,8 +633,8 @@ body, html {
 }
 
 .guess-stock-price button {
-  background-color: #FF00FF; /* Magenta button */
-  color: #FFFFFF; /* White text */
+  background-color: #FF00FF; 
+  color: #FFFFFF; 
   padding: 10px;
   border: none;
 }
@@ -651,12 +646,12 @@ body, html {
 }
 
 .spinner {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db; 
   border-radius: 50%;
-  width: 50px; /* Size of the spinner */
-  height: 50px; /* Size of the spinner */
-  animation: spin 1s linear infinite; /* Spin animation */
+  width: 50px; 
+  height: 50px; 
+  animation: spin 1s linear infinite; 
 }
 
 @keyframes spin {
@@ -665,5 +660,17 @@ body, html {
 }
 
 .loading-spinner p {
-  color: #00FF00; /* Bright green text for retro feel */
+  color: #00FF00; 
 }
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000080; 
+  color: #00FF00; 
+  text-align: center;
+  padding: 10px;
+}
+
