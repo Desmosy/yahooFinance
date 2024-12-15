@@ -27,7 +27,7 @@ Experience the nostalgia of 90s web design with this Yahoo Finance clone! Check 
 - Click to receive humorous financial predictions
 
 ### 💻 Paperclip Assistant
-- Click the paperclip icon for random investment advice
+- Click the paperclip icon for random investment advice // RICK ROLL
 
 ### 📰 News Section
 - Latest market news and updates
