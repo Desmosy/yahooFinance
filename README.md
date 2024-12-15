@@ -1,7 +1,7 @@
 ﻿# yahooFinance
 # Yahoo Finance Clone - Retro 90s Edition
 
-Experience the nostalgia of 90s web design with this Yahoo Finance clone! Check out the live demo [here]([https://desmosy.github.io/yahooFinance/](https://yahoofinance-retro.netlify.app/)).
+Experience the nostalgia of 90s web design with this Yahoo Finance clone! Check out the live demo: https://yahoofinance-retro.netlify.app/
 
 ## Features
 
