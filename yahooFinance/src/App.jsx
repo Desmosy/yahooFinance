@@ -5,7 +5,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import './App.css';
 import coinSound from './assets/coin-sound.wav';
 import drop from './assets/drop.wav';
-
+import DollarCatchGame from './DollarCatchGame';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 function StockItem({ symbol, performance, change }) {
@@ -37,8 +37,8 @@ const PaperclipAssistant = () => {
   return (
     <div>
       <div className="paperclip" onClick={() => setShowAdvice(!showAdvice)}>
-      <img src="https://www.seekpng.com/png/full/172-1729819_every-spread-of-the-2013-2014-marshall-yearbook.png" alt="Assistant Face" style={{ width: '100px', height: '100px', }} />
-      {showAdvice && (
+        <img src="https://www.seekpng.com/png/full/172-1729819_every-spread-of-the-2013-2014-marshall-yearbook.png" alt="Assistant Face" style={{ width: '100px', height: '100px', }} />
+        {showAdvice && (
           <div className="paperclip-text">
             {getRandomAdvice()}
           </div>
@@ -53,8 +53,8 @@ const FortuneTeller = () => {
   const [loading, setLoading] = useState(false);
 
   const toggleFortune = () => {
-    setLoading(true); // Set loading to true when button is clicked
-    setTimeout(() => { // Simulate a delay for suspense
+    setLoading(true);
+    setTimeout(() => {
       const fortunes = [
         "MASSIVE GAINS IN YOUR FUTURE! 💰",
         "MARKET CRASH INCOMING! BRACE YOURSELF! 💥",
@@ -64,8 +64,8 @@ const FortuneTeller = () => {
       ];
       const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
       setFortune(randomFortune);
-      setLoading(false); // Reset loading after fortune is revealed
-    }, 2000); 
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -342,7 +342,7 @@ const GuessTheStockPrice = () => {
     </div>
   );
 };
-const handleClick=()=>{
+const handleClick = () => {
   window.open("https://www.codedex.io/pricing", "_blank", "noopener noreferrer");
 }
 const NewsItem = ({ title, description }) => (
@@ -373,10 +373,10 @@ const Simulator = () => {
   };
 
   const handleTrade = (stock, action) => {
-    const newBalance = action === 'buy' 
-      ? balance - stock.price 
+    const newBalance = action === 'buy'
+      ? balance - stock.price
       : balance + stock.price;
-    
+
     setBalance(newBalance);
     setLogEntries([...logEntries, `[${new Date().toLocaleTimeString()}] ${action.toUpperCase()} ${stock.symbol} at $${stock.price.toFixed(2)}`]);
     playSound(action);
@@ -416,7 +416,7 @@ function Forum() {
     { id: 1, title: "What do you think about Tesla?", content: "I believe Tesla will continue to grow. What are your thoughts?" },
     { id: 2, title: "Best stocks to buy in 2024", content: "I'm looking for recommendations for stocks to invest in this year." },
   ]);
-  
+
   const [newPostTitle, setNewPostTitle] = useState('');
   const [newPostContent, setNewPostContent] = useState('');
 
@@ -448,7 +448,7 @@ function Forum() {
           placeholder="Write your post here..."
           value={newPostContent}
           onChange={(e) => setNewPostContent(e.target.value)}
-          
+
         />
         <button type="submit">Submit Post</button>
       </form>
@@ -472,23 +472,23 @@ function App() {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-  
-  const [searchQuery, setSearchQuery] =useState('');
 
-  const handleSearchChange =(e)=>{
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   }
   const Clock = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
-  
+
     useEffect(() => {
       const timerId = setInterval(() => {
         setTime(new Date().toLocaleTimeString());
       }, 1000);
-  
+
       return () => clearInterval(timerId);
     }, []);
-  
+
     return (
       <div className="retro-clock">
         {time}
@@ -501,9 +501,9 @@ function App() {
         <div className="header-content">
           <span className="title">YAHOO FINANCE
 
-            <img src='https://www.freeiconspng.com/thumbs/yahoo-mail-icon/yahoo-mail-icon-16.png' height="50" width="50"/>
+            <img src='https://www.freeiconspng.com/thumbs/yahoo-mail-icon/yahoo-mail-icon-16.png' height="50" width="50" />
           </span>
-          
+
         </div>
       </header>
       <div className='stock-background'>
@@ -526,28 +526,30 @@ function App() {
         {/* Left column for News */}
         <div className="left-column">
           <div className='left-content'>
-          <h2>NEWS</h2>
-          <Clock/>
-          <a href='#' className='a'>Microsoft on Congress!</a>
-            <p>Microsoft under fire for failing to improve Microsoft Explorer!</p>
-          <img src= "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRuZXBpYXQ0eGduZGt3cnRybXhrY2RvdHp6d2dkZjZiY3BmMHh1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/200.webp" height="170"/>
-          <button className="show-popup-btn" onClick={togglePopup}>
-        Wanna Be Rich? Click Here!
-      </button>
-      <NewsItem 
-  title="Domino Stock Price to the Moon!" 
-  description="Domino's Pizza stock is skyrocketing! Don't miss out on this cheesy opportunity!"
-/>          <div className="spiky-star"></div>
-          <p><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnIybW96YjZnZXRyenhoYnRhejcyd3Bld2RsZ2gwMWpwMHkyY3FmYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ohuAcj7aetzMGOz4I/giphy.webp" height="250" /></p>
-
-          <div className='market-watch'><p>Market Watch</p>
-          
-            <p><a href='#'>Device</a>Lorem ipsum dolor sit amet, consectetuDuis aute irure dolor in re eu fugiat nulla pat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          
+            <h2>NEWS</h2>
+            <Clock />
             <a href='#' className='a'>Microsoft on Congress!</a>
             <p>Microsoft under fire for failing to improve Microsoft Explorer!</p>
-          <img src= "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRuZXBpYXQ0eGduZGt3cnRybXhrY2RvdHp6d2dkZjZiY3BmMHh1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/200.webp" height="170"/></div>
-          <GuessTheStockPrice/>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmRuZXBpYXQ0eGduZGt3cnRybXhrY2RvdHp6d2dkZjZiY3BmMHh1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/200.webp" height="170" />
+            <button className="show-popup-btn" onClick={togglePopup}>
+              Wanna Be Rich? Click Here!
+            </button>
+            <NewsItem
+              title="Domino Stock Price to the Moon!"
+              description="Domino's Pizza stock is skyrocketing! Don't miss out on this cheesy opportunity!"
+            />          <div className="spiky-star"></div>
+            <p><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnIybW96YjZnZXRyenhoYnRhejcyd3Bld2RsZ2gwMWpwMHkyY3FmYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ohuAcj7aetzMGOz4I/giphy.webp" height="250" /></p>
+
+            <div className='market-watch'><p>Market Watch</p>
+
+              <p><a href='#'>Device</a>Lorem ipsum dolor sit amet, consectetuDuis aute irure dolor in re eu fugiat nulla pat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <a href='#' className='a'>Microsoft on Congress!</a>
+              <p>Microsoft under fire for failing to improve Microsoft Explorer!</p>
+              <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjNhbmFpNjl6c3FnZHYyd3RsNjJydGt1ZHBtNHJobjNnNzFnZjE5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bYg33GbNbNIVzSrr84/giphy.webp" height="170" /></div>
+            <GuessTheStockPrice />
+
+            <DollarCatchGame/>
           </div>
         </div>
 
@@ -557,56 +559,56 @@ function App() {
           <MarketCategories />
           <div className="main-content">
             <MarketGraph />
-            <Simulator/>
+            <Simulator />
             <ActionButtons />
-            <FortuneTeller/>
-            
+            <FortuneTeller />
+
             <StatusBar />
             <MarketGraph />
-            <Forum/>
-            <PaperclipAssistant/>
+            <Forum />
+            <PaperclipAssistant />
 
-            
-            
-                   
-           
-        </div>
+
+
+
+
+          </div>
         </div>
 
         <div className="rightest-column">
-                  <div className='market-watch'>Market Watch
-                  <input
-            type="text"
-            className="search-bar"
-            placeholder="🔍 Search..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-                  <img src= "https://media4.giphy.com/media/39YSnl2bYV2fFcje6p/200.webp?cid=790b7611pngii9xa30u4doh19zdp5znk0rwe8s1qrsg9l8h3&ep=v1_gifs_search&rid=200.webp&ct=g" height="170" width="140"/>
+          <div className='market-watch'>Market Watch
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="🔍 Search..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <img src="https://media4.giphy.com/media/39YSnl2bYV2fFcje6p/200.webp?cid=790b7611pngii9xa30u4doh19zdp5znk0rwe8s1qrsg9l8h3&ep=v1_gifs_search&rid=200.webp&ct=g" height="170" width="140" />
 
             <div><p>The Dow fell 390.23 to 8,019.26, to its lowest level...<button className="retro-button">READ MORE</button> </p></div>
 
-            <img src= "https://media0.giphy.com/media/J5JIcOWeznWIU/giphy.webp?cid=ecf05e4751zjfqbp6q53yzurcr0rbcxf5kjs3vvzufvza19o&ep=v1_gifs_search&rid=giphy.webp&ct=g" height="170" width="140"/>
+            <img src="https://media0.giphy.com/media/J5JIcOWeznWIU/giphy.webp?cid=ecf05e4751zjfqbp6q53yzurcr0rbcxf5kjs3vvzufvza19o&ep=v1_gifs_search&rid=giphy.webp&ct=g" height="170" width="140" />
 
             <div><p>Is it Wise to Invest in Chip Company NVIDIA? Yahoo Analyst Says NO!<button className="retro-button">READ MORE</button> </p></div>
 
-            <img src= "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140"/>
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140" />
 
             <div><p>The Dow fell 390.23 to 8,019.26, to its lowest level...<button className="retro-button">READ MORE</button> </p></div>
 
-            <img src= "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmhpODJlbDltMGRyM2t4eWc2MTl2ZWN2aDc2MXNvOXh3NWs4ZGlyeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PCya6Lr0RYHM4/giphy.webp" height="170" width="140"/>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnVueXE0N2M4bDVpMjFoc3U1YjhlMDB6bDQ5NmZoMWR1N3dlazZ2cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZRwDHS8rKNwEjPZT7e/giphy.webp" height="170" width="140" />
 
             <div><p>How Long Can Google Survive?<button className="retro-button">READ MORE</button> </p></div>
 
-            <img src= "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140"/>
-
-<h5>The Dow fell 390.23 to 8,019.26, to its lowest level...</h5>
-
-<img src= "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140"/>
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjUxa3hiMDh0M2ZwMjl0M2luZ2ZmOTVjY2NwNGNpNXVnemJtdjBwcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bn7hlyp0Cmcg0/giphy.webp" height="170" width="140" />
 
             <h5>The Dow fell 390.23 to 8,019.26, to its lowest level...</h5>
 
-            
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXpsd25xc3ZwMjAwYTE4ZXJjcHVyenNlcHczNm5hNWFsc3c0ZDcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JFG6NvptIBSc8OqPNq/giphy.webp" height="170" width="140" />
+
+            <h5>The Dow fell 390.23 to 8,019.26, to its lowest level...</h5>
+
+
 
 
 
@@ -619,9 +621,6 @@ function App() {
       {/* Star Icon */}
       <div className="star-container">
       </div>
-
-      {/* Main Content (Graph, Buttons, StatusBar) */}
-
 
       {/* Pop-up */}
       {showPopup && (
