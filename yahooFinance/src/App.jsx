@@ -5,6 +5,7 @@ import './App.css';
 import coinSound from './assets/coin-sound.wav';
 import drop from './assets/drop.wav';
 import DollarCatchGame from './DollarCatchGame';
+import RetroEmailApp from './assets/RetroEmailApp';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 
@@ -470,6 +471,8 @@ function Forum() {
   );
 }
 
+
+
 //footer
 const Footer = () => {
   return (
@@ -481,7 +484,7 @@ const Footer = () => {
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
-
+  const [showEmailApp, setShowEmailApp] = useState(false);
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -516,6 +519,30 @@ function App() {
 
             <img src='https://www.freeiconspng.com/thumbs/yahoo-mail-icon/yahoo-mail-icon-16.png' height="50" width="50" />
           </span>
+          <div 
+            onClick={() => setShowEmailApp(true)}
+            className="email-logo"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              right: '20px',
+              transform: 'translateY(-50%)',
+              fontSize: '24px',
+              cursor: 'pointer'
+            }}
+          >
+            <div className="email-container">
+  <img 
+    className="emailLogo" 
+    src="https://64.media.tumblr.com/28f7d41869ff8aec052777020eeb6242/3f276049d15c8c6e-91/s540x810/385b0d2b0f77ad276bbbdc640695b2b71a483d7a.png" 
+    height="50" 
+    width="50"
+    alt="Email Logo"
+  />
+  <span className="sign-in-text">Email</span>
+</div>
+
+          </div>
 
         </div>
       </header>
@@ -629,6 +656,8 @@ function App() {
       <div className="star-container">
       </div>
 
+      
+
       {showPopup && (
         <div className="popup-container">
           <div className="popup">
@@ -643,6 +672,39 @@ function App() {
       <button className="show-popup-btn" onClick={togglePopup}>
         Wanna Be Rich? Click Here!
       </button>
+
+      {showEmailApp && (
+  <div className="email-popup" style={{
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 1000,
+    backgroundColor: '#C0C0C0',
+    padding: '10px',
+    border: '2px solid',
+    borderColor: '#FFFFFF #808080 #808080 #FFFFFF'
+  }}>
+    <RetroEmailApp />
+    <button 
+      onClick={() => setShowEmailApp(false)}
+      style={{
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+        backgroundColor: '#C0C0C0',
+        border: '2px solid',
+        borderColor: '#FFFFFF #808080 #808080 #FFFFFF',
+        padding: '2px 5px',
+        fontSize: '12px',
+        cursor: 'pointer'
+      }}
+    >
+      Close
+    </button>
+  </div>
+)}
+
       <Footer/>
     </main>
   );

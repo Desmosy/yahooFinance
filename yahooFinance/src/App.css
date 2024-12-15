@@ -674,3 +674,21 @@ body, html {
   padding: 10px;
 }
 
+.emailLogo {
+  margin-right:50px;
+}
+
+.h5{
+  color: white;
+}
+.email-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-text {
+  font-size: 10px;
+  margin-right:50px;
+  color: #00FF00;
+}
