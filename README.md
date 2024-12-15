@@ -5,6 +5,9 @@ Experience the nostalgia of 90s web design with this Yahoo Finance clone! Check 
 
 ## Features
 
+### 💼 Email Section
+-Allows you to navigate the old email style!
+
 ### 📈 Real-time Stock Ticker
 - Scrolling stock ticker at the top of the page with buy/sell indicators
 
