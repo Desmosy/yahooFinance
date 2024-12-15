@@ -55,6 +55,4 @@ Experience the nostalgia of 90s web design with this Yahoo Finance clone! Check 
 
 This project recreates the excitement of 90s stock trading with a modern twist. Dive in and experience the golden age of the internet stock boom!
 
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/30636911/6c5df5ce-b75d-435f-8770-60fd50bac0df/paste.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/30636911/d9f65b20-7539-4dae-8bbb-58e54a902d79/paste-2.txt
+
